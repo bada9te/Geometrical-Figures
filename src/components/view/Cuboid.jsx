@@ -101,8 +101,8 @@ export default function CuboidWithAxes({cuboidSize}) {
         />
         <pointLight position={[-5, -5, 5]} intensity={0.1} color="lightblue" />
 
-        <Cuboid size={cuboidSize} />
-        <Axes length={maxDimension * 1.5} height={cuboidSize[1]} width={cuboidSize[0]} depth={cuboidSize[2]} />
+        <Cuboid size={cuboidSize.map(i => i /10)} />
+        <Axes length={maxDimension / 10 + 1} height={cuboidSize[1]} width={cuboidSize[0]} depth={cuboidSize[2]} />
 
         <Grid
           args={[10, 10]} // size of grid

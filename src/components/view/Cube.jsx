@@ -103,8 +103,8 @@ export default function CubeWithAxes({ height: size }) {
         {/* Fill light for extra brightness */}
         <pointLight position={[-5, -5, 5]} intensity={0.1} color="lightblue" />
 
-        <Cube size={size}/>
-        <Axes length={size * 1.5} cubeSize={size} />
+        <Cube size={size / 2}/>
+        <Axes length={size / 2 + 1} cubeSize={size} />
 
         <Grid
             args={[10, 10]} // size of grid

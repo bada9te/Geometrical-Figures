@@ -97,8 +97,8 @@ export default function ConeWithAxes({ height, radius }) {
         />
         <pointLight position={[-5, -5, 5]} intensity={0.1} color="lightblue" />
 
-        <Cone height={height} radius={radius} />
-        <Axes length={Math.max(height, radius) * 1.5} height={height} radius={radius} />
+        <Cone height={height / 10} radius={radius / 10} />
+        <Axes length={Math.max(height / 10, radius / 10) * 1.5} height={height} radius={radius} />
 
         <Grid
             args={[10, 10]} // size of grid

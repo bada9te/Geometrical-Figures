@@ -98,8 +98,8 @@ export default function SphereWithAxes({radius}) {
         />
         <pointLight position={[-5, -5, 5]} intensity={0.1} color="lightblue" />
 
-        <Sphere radius={radius} />
-        <Axes length={radius * 2} radius={radius} />
+        <Sphere radius={radius / 10} />
+        <Axes length={radius / 10 + 1} radius={radius} />
 
         <Grid
             args={[10, 10]} // size of grid
