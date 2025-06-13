@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { Canvas, useThree } from "@react-three/fiber";
-import { Text, Grid } from "@react-three/drei";
+import { Text, Grid, OrbitControls } from "@react-three/drei";
 
 function Axes({ length = 2, height, width, depth }) {
   return (
@@ -78,13 +78,12 @@ function CameraController({ cameraPosition }) {
   return null;
 }
 
-export default function CuboidWithAxes() {
+export default function CuboidWithAxes({cuboidSize}) {
   const cameraPosition = [4, 3, 4];
-  const cuboidSize = [1.2, 0.8, 1.6]; // width, height, depth
   const maxDimension = Math.max(...cuboidSize);
 
   return (
-    <div className="relative w-full h-[80vh] sm:h-[100vh] overflow-hidden">
+    <div className="relative w-full h-[80vh] sm:h-[calc(100vh-100px)] overflow-hidden">
       <Canvas className="block w-full h-full" shadows>
         <ambientLight intensity={0.3} />
         <directionalLight
@@ -118,6 +117,7 @@ export default function CuboidWithAxes() {
           sectionColor={"white"}
         />
         <CameraController cameraPosition={cameraPosition} />
+        <OrbitControls />
       </Canvas>
 
       <div className="absolute top-4 left-0 w-full text-center pointer-events-none select-none text-white font-semibold text-base sm:text-lg text-shadow-md">

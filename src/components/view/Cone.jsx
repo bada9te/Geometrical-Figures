@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
-import { Text, Grid } from "@react-three/drei";
+import { Text, Grid, OrbitControls } from "@react-three/drei";
 
 function Axes({ length = 2, height, radius }) {
   return (
@@ -75,13 +75,11 @@ function CameraController({ cameraPosition }) {
   return null;
 }
 
-export default function ConeWithAxes() {
+export default function ConeWithAxes({ height, radius }) {
   const cameraPosition = [3, 3, 3];
-  const height = 1.5;
-  const radius = 0.6;
 
   return (
-    <div className="relative w-full h-[80vh] sm:h-[100vh] overflow-hidden">
+    <div className="relative w-full h-[80vh] sm:h-[calc(100vh-100px)] overflow-hidden">
       <Canvas className="block w-full h-full" shadows>
         <ambientLight intensity={0.3} />
         <directionalLight
@@ -115,6 +113,7 @@ export default function ConeWithAxes() {
             sectionColor={"white"}
         />
         <CameraController cameraPosition={cameraPosition} />
+        <OrbitControls />
       </Canvas>
 
       <div className="absolute top-4 left-0 w-full text-center pointer-events-none select-none text-white font-semibold text-base sm:text-lg text-shadow-md">

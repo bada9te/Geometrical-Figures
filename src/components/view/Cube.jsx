@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
-import { Text, Grid } from "@react-three/drei";
+import { Text, Grid, OrbitControls } from "@react-three/drei";
 
 function Axes({ length = 2, cubeSize }) {
   return (
@@ -76,12 +76,11 @@ function CameraController({ cameraPosition }) {
   return null;
 }
 
-export default function CubeWithAxes() {
+export default function CubeWithAxes({ height: size }) {
   const cameraPosition = [3, 3, 3];
-  const size = 1.2;
 
   return (
-    <div className="relative w-full h-[80vh] sm:h-[100vh] overflow-hidden">
+    <div className="relative w-full h-[80vh] sm:h-[calc(100vh-100px)] overflow-hidden">
       <Canvas className="block w-full h-full" shadows>
         {/* Ambient light for soft global illumination */}
         <ambientLight intensity={0.3} />
@@ -120,6 +119,7 @@ export default function CubeWithAxes() {
             sectionColor={"white"}
         />
         <CameraController cameraPosition={cameraPosition} />
+        <OrbitControls />
       </Canvas>
 
       <div className="absolute top-4 left-0 w-full text-center pointer-events-none select-none text-white font-semibold text-base sm:text-lg text-shadow-md">
